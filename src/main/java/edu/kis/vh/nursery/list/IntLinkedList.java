@@ -4,17 +4,19 @@ public class IntLinkedList {
 
     private Node last;
 
+    private static final int EMPTY_SIZE = -1;
+
     public void push(int i) {
         if (last == null)
             last = new Node(i);
         else {
-            last.next = new Node(i);
-            last.next.prev = last;
-            last = last.next;
+            last.setNext(new Node(i));
+            last.getNext().setPrev(last);
+            last = last.getNext();
         }
     }
 
-    public boolean isEmpty() {
+    private boolean isEmpty() {
         return last == null;
     }
 
@@ -24,15 +26,15 @@ public class IntLinkedList {
 
     public int top() {
         if (isEmpty())
-            return -1;
-        return last.value;
+            return EMPTY_SIZE;
+        return last.getValue();
     }
 
     public int pop() {
         if (isEmpty())
-            return -1;
-        int ret = last.value;
-        last = last.prev;
+            return EMPTY_SIZE;
+        int ret = last.getValue();
+        last = last.getPrev();
         return ret;
     }
 
