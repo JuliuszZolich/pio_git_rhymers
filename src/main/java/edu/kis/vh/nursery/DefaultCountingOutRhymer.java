@@ -38,4 +38,7 @@ public class DefaultCountingOutRhymer {
         return storage[total--];
     }
 
+    public int getTotal() {
+        return total;
+    }
 }
